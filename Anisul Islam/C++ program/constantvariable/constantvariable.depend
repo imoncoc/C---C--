@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1602084337 source:c:\users\imon\desktop\programming\anisul islam\c++ program\constantvariable\main.cpp
+	<iostream>
+	"constantclass.h"
+
+1602084337 c:\users\imon\desktop\programming\anisul islam\c++ program\constantvariable\constantclass.h
+

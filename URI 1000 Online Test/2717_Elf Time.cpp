@@ -1,0 +1,16 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int n, a, b, sum = 0;
+    cin>>n;
+    cin>>a>>b;
+    if((a + b) <= n ){
+        cout<<"Farei hoje!"<<endl;
+    }else{
+        cout<<"Deixa para amanha!"<<endl;
+    }
+
+
+
+    return 0;
+}
