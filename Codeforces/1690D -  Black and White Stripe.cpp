@@ -3,64 +3,28 @@ using namespace std;
 int main(){
     int t;
     cin>>t;
+
     while(t--){
-        int n,k;
+        int n, k;
     cin>>n>>k;
-    char st[n];
-    int ans = 0;
+    string st;
+    cin>>st;
+    int count = 0;
 
-    for(int i = 0; i < n; i++){
-        cin>>st[i];
+    for(int i = 0; i < k; i++){
+        if(st[i] == 'W')count++;
     }
 
-    string res;
-    int count = 0, resCount = 0;
-    for(int i = 0; i < n; i++){
-            if(st[i] == 'B'){
-                res += st[i];
-            }else{
-                res += 'B';
-                resCount++;
-            }
+    int ans = count;
 
-        if(st[i] == 'B'){
-            count++;
-            if(ans < count){
-                ans = count;
-            }
-        }else{
-            count = 0;
-        }
+    for(int i = k; i < n; i++){
+        if(st[i] == 'W') count++;
+        if(st[i-k] == 'W') count--;
+        ans = min(ans,count);
     }
 
-    /*
-    cout<<"Ans: "<<ans<<endl;
-    cout<<"Res: "<<res<<endl;
-    cout<<"Res: "<<resCount<<endl;
-
-    */
-    if(ans >= k){
-            ans = 0;
-        //cout<<"1st if: "<<ans<<endl;
-        cout<<ans<<endl;
-    }else{
-        ans = k - ans;
-
-       if(resCount < ans){
-        //cout<<"2nd res: "<< resCount<<endl;
-        cout<<resCount<<endl;
-       }else{
-           //cout<<"Last else: "<<ans<<endl;
-           cout<<ans<<endl;
-       }
-
+    cout<<ans<<endl;
     }
-
-    }
-
-
-
-
 
     return 0;
 }
