@@ -7,23 +7,24 @@ public:
     Node* next;
 };
 
-void push(Node** head_ref, int new_data){
+void push(Node** head_ref, int newData){
+
+    Node* newNode = new Node();
+    newNode->data = newData;
+    newNode->next = *head_ref;
+    *head_ref = newNode;
     size++;
-    Node* new_node = new Node();
-    new_node->data = new_data;
-    new_node->next = *head_ref;
-    *head_ref = new_node;
+    return;
 }
 
-void append(Node** head_ref, int new_data){
-    size++;
-    Node* new_node = new Node();
-    new_node->data = new_data;
-    new_node->next = NULL;
+void append(Node** head_ref, int newData){
+    Node* newNode = new Node();
+    newNode->data = newData;
+    newNode->next = NULL;
 
     if(*head_ref == NULL){
-        new_node->next = *head_ref;
-        *head_ref = new_node;
+        newNode->next = *head_ref;
+        *head_ref = newNode;
         return;
     }
 
@@ -31,88 +32,56 @@ void append(Node** head_ref, int new_data){
     while(temp->next != NULL){
         temp = temp->next;
     }
-    temp->next = new_node;
+
+    temp->next = newNode;
+    size++;
     return;
 }
 
-void insertAtPosition(Node** head_ref, int position, int new_data){
-    if(position < 1 || position > size + 1 ){
+void insertAtPosition(Node** head_ref, int position, int new_Data){
+    if(position < 0 || position > size + 1){
         cout<<"Invalid Position"<<endl;
         return;
-    }else{
+    }
+    else{
         while(position--){
             if(position == 0){
-                Node* new_node = new Node();
-                new_node->data = new_data;
-                new_node->next = *head_ref;
-                *head_ref = new_node;
-            }else{
+                Node* new_Node = new Node();
+                new_Node->data = new_Data;
+                new_Node->next = *head_ref;
+                *head_ref = new_Node;
+            }
+            else{
                 head_ref = &(*head_ref)->next;
             }
         }
         size++;
     }
+
 }
 
-Node* deleteEndNode(Node* head){
-    if(head == NULL){
-        cout<<"Node is Empty"<<endl;
-        return NULL;
+void printList(Node* temp){
+    while(temp != NULL){
+        cout<<temp->data<<" ";
+        temp = temp->next;
     }
-    size--;
-    if(head->next == NULL){
-        delete head;
-        cout<<"Node is empty, After delete last Node."<<endl;
-        return NULL;
-    }
-
-    Node* last = head;
-    while(last->next->next != NULL){
-        last = last->next;
-    }
-
-    delete (last->next);
-    last->next = NULL;
-    return head;
-}
-
-void printList(Node* n){
-    while(n != NULL){
-        cout<<n->data<<" ";
-        n = n->next;
-    }
-    cout<<endl;
 }
 int main(){
     Node* head = NULL;
 
-    push(&head, 30);
+
     push(&head, 20);
     push(&head, 10);
+    append(&head, 30);
     append(&head, 40);
+    append(&head, 50);
     insertAtPosition(&head, 3, 25);
 
     printList(head);
 
-    deleteEndNode(head);
-    printList(head);
-    cout<<"Size: "<<size<<endl;
+    cout<<endl<<"Size: "<<size<<endl;
 
-    deleteEndNode(head);
-    printList(head);
-    cout<<"Size: "<<size<<endl;
 
-    deleteEndNode(head);
-    printList(head);
-    cout<<"Size: "<<size<<endl;
-
-    deleteEndNode(head);
-    printList(head);
-    cout<<"Size: "<<size<<endl;
-
-    deleteEndNode(head);
-    //printList(head);
-    cout<<"Size: "<<size<<endl;
 
 
     return 0;
