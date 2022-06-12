@@ -42,7 +42,7 @@ int main()
 
     int index = binarySearch(a,8,x);
 
-    if (index!=-1)
+    if (index != -1)
     {
         cout<<"Number "<<x<<" is : "<<index<<endl;
     }
