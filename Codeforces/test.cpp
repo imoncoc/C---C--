@@ -4,17 +4,20 @@ using namespace std;
 
 int main()
 {
-    int arr[] = { 2, 1, 3 };
+    int n, m;
+    cin>>n>>m;
+    string str[n];
+    for(int i = 0; i < n; i++){
+        cin>>str[i];
+    }
 
-   // sort(arr, arr + 3);
-
-    cout << "The 3! possible permutations with 3 elements:\n";
-    do {
-        cout << arr[0] << " " << arr[1] << " " << arr[2] << "\n";
-    } while (next_permutation(arr, arr + 3));
-
-    cout << "After loop: " << arr[0] << ' '
-         << arr[1] << ' ' << arr[2] << '\n';
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < n; j++){
+            for(int k = 0; k < n; k++){
+                cout<<str[j+i][k]<<" ";
+            }
+        }
+    }
 
     return 0;
 }
