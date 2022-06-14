@@ -1,4 +1,4 @@
-#include<iostream>
+#include<bits/stdc++.h>
 using namespace std;
 int size = 0;
 class Node{
@@ -7,49 +7,46 @@ public:
     Node* next;
 };
 
-void push(Node** head_ref, int newData){
-
-    Node* newNode = new Node();
-    newNode->data = newData;
-    newNode->next = *head_ref;
-    *head_ref = newNode;
+void push(Node** head_ref, int new_data){
+    Node* new_node = new Node();
+    new_node->data = new_data;
+    new_node->next = *head_ref;
+    *head_ref = new_node;
     size++;
     return;
 }
 
-void append(Node** head_ref, int newData){
-    Node* newNode = new Node();
-    newNode->data = newData;
-    newNode->next = NULL;
+void append(Node** head_ref, int new_data){
+    Node* new_node = new Node();
+    new_node->data = new_data;
+    new_node->next = NULL;
+    size++;
 
     if(*head_ref == NULL){
-        newNode->next = *head_ref;
-        *head_ref = newNode;
+        new_node->next = *head_ref;
+        *head_ref = new_node;
         return;
     }
 
     Node* temp = *head_ref;
-    while(temp->next != NULL){
+    while (temp->next != NULL){
         temp = temp->next;
     }
-
-    temp->next = newNode;
-    size++;
-    return;
+    temp->next = new_node;
 }
 
-void insertAtPosition(Node** head_ref, int position, int new_Data){
+void insertAtPosition(Node** head_ref, int position, int new_data){
     if(position < 0 || position > size + 1){
-        cout<<"Invalid Position"<<endl;
+        cout<<"Invalid position"<<endl;
         return;
     }
     else{
         while(position--){
             if(position == 0){
-                Node* new_Node = new Node();
-                new_Node->data = new_Data;
-                new_Node->next = *head_ref;
-                *head_ref = new_Node;
+                Node* new_node = new Node();
+                new_node->data = new_data;
+                new_node->next = *head_ref;
+                *head_ref = new_node;
             }
             else{
                 head_ref = &(*head_ref)->next;
@@ -57,30 +54,82 @@ void insertAtPosition(Node** head_ref, int position, int new_Data){
         }
         size++;
     }
+}
 
+Node* removeFirstNode(Node *&head_ref){
+    if(head_ref == NULL){
+        cout<<"List is empty."<<endl;
+        return NULL;
+    }
+    Node* temp = head_ref;
+    head_ref = head_ref->next;
+    delete temp;
+    return head_ref;
+}
+
+Node* removeLastNode(Node *&head_ref){
+    if(head_ref == NULL){
+        return NULL;
+    }
+    if(head_ref->next == NULL){
+        delete head_ref;
+        return NULL;
+    }
+
+    Node* second_last = head_ref;
+    while(second_last->next->next != NULL){
+        second_last = second_last->next;
+    }
+
+    delete second_last->next;
+    second_last->next = NULL;
+
+    return head_ref;
 }
 
 void printList(Node* temp){
-    while(temp != NULL){
+    while (temp != NULL){
         cout<<temp->data<<" ";
         temp = temp->next;
     }
 }
 int main(){
-    Node* head = NULL;
+    Node* head = new Node();
+    Node* second = new Node();
+    Node* third = new Node();
 
+    head->data = 10;
+    head->next = second;
 
-    push(&head, 20);
-    push(&head, 10);
-    append(&head, 30);
+    second->data = 20;
+    second->next = third;
+
+    third->data = 30;
+    third->next = NULL;
+    size = 3;
+
+    push(&head, 9);
+    push(&head, 8);
     append(&head, 40);
     append(&head, 50);
-    insertAtPosition(&head, 3, 25);
+    insertAtPosition(&head, 5, 25);
+    cout<<"SIze: "<<size<<endl;
 
+    cout<<"Before Node: ";
     printList(head);
+    cout<<endl;
 
-    cout<<endl<<"Size: "<<size<<endl;
+    removeFirstNode(head);
 
+    cout<<"After deleted first Node: ";
+    printList(head);
+    cout<<endl;
+
+    removeLastNode(head);
+
+    cout<<"After deleted Last Node: ";
+    printList(head);
+    cout<<endl;
 
 
 
