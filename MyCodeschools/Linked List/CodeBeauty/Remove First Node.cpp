@@ -66,41 +66,6 @@ Node* removeFirstNode(Node* head){
     return head;
 }
 
-Node* removeLastNode(Node* head){
-    if(head == NULL){
-        return NULL;
-    }
-    size--;
-    if(head->next == NULL){
-        delete head;
-        return NULL;
-    }
-
-    Node* second_last = head;
-    while(second_last->next->next != NULL){
-        second_last = second_last->next;
-    }
-
-    delete second_last->next;
-    second_last->next = NULL;
-    return head;
-}
-
-void reverseList(Node** head){
-    Node* current_node = *head;
-    Node* prev_node = NULL;
-    Node* next_node = NULL;
-
-    while(current_node != NULL){
-        next_node = current_node->next;
-        current_node->next = prev_node;
-        prev_node = current_node;
-        current_node = next_node;
-    }
-
-    *head = prev_node;
-}
-
 void printList(Node* n){
     while( n != NULL ){
         cout<<n->data<<" ";
@@ -121,10 +86,41 @@ int main(){
 
 
     cout<<"Size: "<<size<<endl;
-    reverseList(&head);
-
     printList(head);
+    cout<<endl;
+
+    head = removeFirstNode(head);
+    cout<<"Size: "<<size<<endl;
+    printList(head);
+    cout<<endl;
+
+    head = removeFirstNode(head);
+    cout<<"Size: "<<size<<endl;
+    printList(head);
+    cout<<endl;
+
+    head = removeFirstNode(head);
+    cout<<"Size: "<<size<<endl;
+    printList(head);
+    cout<<endl;
+
+    head = removeFirstNode(head);
+    cout<<"Size: "<<size<<endl;
+    printList(head);
+    cout<<endl;
+
+    head = removeFirstNode(head);
+    cout<<"Size: "<<size<<endl;
+    printList(head);
+    cout<<endl;
+
+    head = removeFirstNode(head);
+    cout<<"Size: "<<size<<endl;
+    printList(head);
+    cout<<endl;
+
 
 
     return 0;
 }
+
