@@ -1,8 +1,8 @@
-#include<bits/stdc++.h>
+#include<iostream>
 using namespace std;
 int size = 0;
 class Node{
-    public:
+public:
     int data;
     Node* next;
 };
@@ -33,36 +33,37 @@ void append(Node** head_ref, int new_data){
         temp = temp->next;
     }
     temp->next = new_node;
+    return;
 }
 
 void insertAtPosition(Node** head_ref, int position, int new_data){
     if(position < 0 || position > size + 1){
-        cout<<"Invalid position"<<endl;
-        return;
+        cout<<"Invalid position!"<<endl;
     }
-    while(position--){
-        if(position == 0){
-            Node* new_node = new Node();
-            new_node->data = new_data;
-            new_node->next = *head_ref;
-            *head_ref = new_node;
+    else{
+        while(position--){
+            if(position == 0){
+                Node* new_node = new Node();
+                new_node->data = new_data;
+                new_node->next = *head_ref;
+                *head_ref = new_node;
+            }
+            else{
+                head_ref = &(*head_ref)->next;
+            }
         }
-        else{
-            head_ref = &(*head_ref)->next;
-        }
+        size++;
     }
-    size++;
 }
 
 Node* removeFirstNode(Node* head){
     if(head == NULL){
         return NULL;
     }
-
+    size--;
     Node* temp = head;
     head = head->next;
     delete temp;
-    size--;
     return head;
 }
 
@@ -75,55 +76,45 @@ Node* removeLastNode(Node* head){
         delete head;
         return NULL;
     }
-
     Node* second_last = head;
     while(second_last->next->next != NULL){
         second_last = second_last->next;
     }
-
     delete second_last->next;
     second_last->next = NULL;
     return head;
 }
 
-void reverseList(Node** head){
-    Node* current_node = *head;
-    Node* prev_node = NULL;
-    Node* next_node = NULL;
-
-    while(current_node != NULL){
-        next_node = current_node->next;
-        current_node->next = prev_node;
-        prev_node = current_node;
-        current_node = next_node;
-    }
-
-    *head = prev_node;
-}
-
 void printList(Node* n){
-    while( n != NULL ){
+    while(n != NULL){
         cout<<n->data<<" ";
         n = n->next;
     }
 }
 int main(){
     Node* head = NULL;
-
     push(&head, 30);
     push(&head, 20);
     push(&head, 10);
-
     append(&head, 40);
     append(&head, 50);
+    append(&head, 60);
     insertAtPosition(&head, 3, 25);
+    head = removeFirstNode(head);
+    head = removeFirstNode(head);
+    head = removeLastNode(head);
+    head = removeLastNode(head);
+    head = removeLastNode(head);
+    head = removeLastNode(head);
+    head = removeLastNode(head);
 
 
 
-    cout<<"Size: "<<size<<endl;
-    reverseList(&head);
+
+
 
     printList(head);
+    cout<<endl<<"size: "<<size<<endl;
 
 
     return 0;
