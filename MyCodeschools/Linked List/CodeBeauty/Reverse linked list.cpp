@@ -20,7 +20,6 @@ void reverseList(Node** head){
     Node* current_node = *head;
     Node* next_node = NULL;
     Node* prev_node = NULL;
-
     while(current_node != NULL){
         next_node = current_node->next;
         current_node->next = prev_node;

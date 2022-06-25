@@ -21,13 +21,11 @@ void append(Node** head_ref, int new_data){
     new_node->data = new_data;
     new_node->next = NULL;
     size++;
-
     if(*head_ref == NULL){
         new_node->next = *head_ref;
         *head_ref = new_node;
         return;
     }
-
     Node* temp = *head_ref;
     while(temp->next != NULL){
         temp = temp->next;
@@ -37,22 +35,23 @@ void append(Node** head_ref, int new_data){
 }
 
 void insertAtPosition(Node** head_ref, int position, int new_data){
-    if(position < 0 || position > size + 1){
-        cout<<"Invalid position!"<<endl;
+    if(position < 1 || position > size + 1){
+        cout<<"Invalid position"<<endl;
+        return;
     }
     else{
         while(position--){
-            if(position == 0){
-                Node* new_node = new Node();
-                new_node->data = new_data;
-                new_node->next = *head_ref;
-                *head_ref = new_node;
-            }
-            else{
-                head_ref = &(*head_ref)->next;
-            }
+        if(position == 0){
+            Node* new_node = new Node();
+            new_node->data = new_data;
+            new_node->next = *head_ref;
+            *head_ref = new_node;
         }
-        size++;
+        else{
+            head_ref = &(*head_ref)->next;
+        }
+    }
+    size++;
     }
 }
 
@@ -60,10 +59,10 @@ Node* removeFirstNode(Node* head){
     if(head == NULL){
         return NULL;
     }
-    size--;
     Node* temp = head;
     head = head->next;
     delete temp;
+    size--;
     return head;
 }
 
@@ -85,6 +84,21 @@ Node* removeLastNode(Node* head){
     return head;
 }
 
+void reverseList(Node** head_ref){
+    Node* current_node = *head_ref;
+    Node* next_node = NULL;
+    Node* prev_node = NULL;
+
+    while(current_node != NULL){
+        next_node = current_node->next;
+        current_node->next = prev_node;
+        prev_node = current_node;
+        current_node = next_node;
+    }
+
+    *head_ref = prev_node;
+}
+
 void printList(Node* n){
     while(n != NULL){
         cout<<n->data<<" ";
@@ -98,23 +112,24 @@ int main(){
     push(&head, 10);
     append(&head, 40);
     append(&head, 50);
-    append(&head, 60);
     insertAtPosition(&head, 3, 25);
+
     head = removeFirstNode(head);
-    head = removeFirstNode(head);
     head = removeLastNode(head);
-    head = removeLastNode(head);
-    head = removeLastNode(head);
-    head = removeLastNode(head);
-    head = removeLastNode(head);
-
-
-
+    //head = removeLastNode(head);
+    //head = removeLastNode(head);
+   // head = removeLastNode(head);
+    //head = removeLastNode(head);
 
 
 
     printList(head);
-    cout<<endl<<"size: "<<size<<endl;
+    cout<<endl<<size<<endl;
+
+    cout<<endl<<"After reverse list: ";
+    reverseList(&head);
+    printList(head);
+
 
 
     return 0;
