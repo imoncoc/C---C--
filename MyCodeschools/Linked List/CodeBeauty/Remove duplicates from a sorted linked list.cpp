@@ -37,6 +37,38 @@ void removeDublicates(Node* head){
     }
 }
 
+void removeSpcificNode(Node** head, int new_data){
+    Node* current_node = *head;
+    Node* prev_node = NULL;
+
+    if(current_node == NULL){
+        return;
+    }
+
+    while(current_node->next != NULL){
+        if(current_node->data == new_data){
+            *head = current_node->next;
+            //current_node = current_node->next;
+            delete current_node;
+        }
+        else{
+            current_node = current_node->next;
+        }
+    }
+}
+
+Node* removeFirstNode(Node* head){
+    if(head == NULL){
+        return NULL;
+    }
+
+    Node* temp = head;
+    head = head->next;
+    delete temp;
+    size--;
+    return head;
+}
+
 
 
 void printList(Node* n){
@@ -59,7 +91,8 @@ int main(){
     printList(head);
     cout<<endl<<"size: "<<size<<endl;
 
-    removeDublicates(head);
+    //removeDublicates(head);
+    removeSpcificNode(&head, 11);
     cout<<"deleted: "<<endl;
     printList(head);
     cout<<endl<<"size: "<<size<<endl;
