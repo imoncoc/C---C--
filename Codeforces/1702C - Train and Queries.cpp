@@ -22,9 +22,9 @@ int main()
 		m2[ar[i]] = i + 1;
 	}
 
-  // for(auto it:m1)cout<<it.first<<" "<<it.second<<endl;
-  // cout<<endl;
- // for(auto it:m2)cout<<it.first<<" "<<it.second<<endl;
+   for(auto it:m1)cout<<it.first<<" "<<it.second<<endl;
+   cout<<endl;
+ for(auto it:m2)cout<<it.first<<" "<<it.second<<endl;
  while(k--)
  {
      int a,b;cin>>a>>b;
