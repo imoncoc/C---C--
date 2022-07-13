@@ -2,10 +2,11 @@
 using namespace std;
 int size = 0;
 class Node{
-public:
+    public:
     int data;
     Node* next;
 };
+
 void push(Node** head_ref, int new_data){
     Node* new_node = new Node();
     new_node->data = new_data;
@@ -15,84 +16,51 @@ void push(Node** head_ref, int new_data){
     return;
 }
 
-void append(Node** head_ref, int new_data){
-    Node* new_node = new Node();
-    new_node->data = new_data;
-    new_node->next = NULL;
-    size++;
+Node* removeNode(Node* head_ref, int value){
+    if(head_ref == NULL) return head_ref;
 
-    if(*head_ref == NULL){
-        new_node->next = *head_ref;
-        *head_ref = new_node;
-        return;
+    while(head_ref != NULL && head_ref->data == value){
+        head_ref = head_ref->next;
     }
 
-    Node* temp = *head_ref;
-    while(temp->next != NULL){
-        temp = temp->next;
-    }
-    temp->next = new_node;
-    return;
-}
+    Node* temp = head_ref;
 
-void insertAtPosition(Node** head_ref, int position, int new_data){
-    if(position < 1 || position > size + 1){
-        cout<<"Invalid Position"<<endl;
-        return;
-    }
-    else{
-        while(position--){
-            if(position == 0){
-                Node* new_node = new Node();
-                new_node->data = new_data;
-                new_node->next = *head_ref;
-                *head_ref = new_node;
-            }
-            else{
-                head_ref = &(*head_ref)->next;
-            }
+    while(temp != NULL){
+        if(temp->next && temp->next->data == value){
+            temp->next = temp->next->next;
         }
-        size++;
+        else{
+            temp = temp->next;
+        }
     }
-}
 
-Node* removeAtFront(Node* head){
-    if(size == 0){
-        cout<<"Invalid remove operation"<<endl;
-        return head;
-    }
-    Node* temp = head;
-    head = head->next;
-    delete(temp);
-    size--;
-    return head;
-}
-
-Node* removeAtLast(Node* head){
-
+    return head_ref;
 }
 
 void printList(Node* n){
-    while(n != NULL){
+    while( n != NULL ){
         cout<<n->data<<" ";
+        //cout<<"data: "<<n->data<<" "<<"next: "<<n->next<<endl;
         n = n->next;
     }
 }
 int main(){
     Node* head = NULL;
+
+    push(&head, 20);
+    push(&head, 50);
+    push(&head, 40);
+    push(&head, 20);
     push(&head, 30);
     push(&head, 20);
     push(&head, 10);
+    push(&head, 20);
 
-    append(&head, 40);
-    insertAtPosition(&head, 3, 25);
 
-    head = removeAtFront(head);
+    removeNode(head, 20);
+
 
     printList(head);
-    cout<<endl<<"Size: "<<size<<endl;
-
-
 
 
 
