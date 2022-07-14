@@ -1,4 +1,4 @@
-#include<iostream>
+#include<bits/stdc++.h>
 using namespace std;
 int main(){
     long long n,m,a, len = 0, bre = 0, ans = 0;
