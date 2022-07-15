@@ -3,22 +3,27 @@ using namespace std;
 int main(){
     long long n, k;
     cin>>n>>k;
-    vector<int> vec;
+    long long ans = 0;
+    long long temp = n/2;
 
-    for(long long i = 1; i <= n; i++){
-        if(i % 2 == 1){
-            vec.push_back(i);
+    if(n % 2 == 0){
+        if(temp >= k){
+        ans = k + k-1;
+      }
+        else{
+        ans = (k - temp) * 2;
+      }
+    }
+    else{
+        if(temp+1 >= k){
+            ans = k + k-1;
+        }
+        else{
+            ans = (k - (temp+ 1) ) * 2;
         }
     }
 
-    for(long long i = 1; i <= n; i++){
-        if(i % 2 == 0){
-            vec.push_back(i);
-        }
-    }
-
-    cout<<vec[k-1]<<endl;
-
+    cout<<ans<<endl;
 
 
     return 0;
