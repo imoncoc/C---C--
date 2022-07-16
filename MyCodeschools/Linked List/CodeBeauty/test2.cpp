@@ -1,64 +1,42 @@
-#include<iostream>
+#include<bits/stdc++.h>
 using namespace std;
-class Node{
-public:
-    int data;
-    Node* next;
-};
+map<string,int>mp,value;
+string check="I";
+void solve() {
+        int n,p;
+        cin>>n>>p;
+        for(int i=0; i<n; i++) {
+            string a,b;
+            cin>>a>>b;
+            if(a==check) {
+                mp[b]=1;
+                for(int i=0; i<p; i++) {
+                    string temp=b.substr(0,i+1);
+                    value[temp]++;
+                }
+            }
+            else {
+                if(!mp[b]) {
+                    cout<<0<<'\n';
+                }
+                else {
+                    int ans=0;
+                    for(int i=0; i<p; i++) {
+                    string temp=b.substr(0,i+1);
+                    ans+=value[temp];
 
-int Push(Node** head_ref, int new_data){
-    Node* new_node = new Node();
-    new_node->data = new_data;
-    new_node->next = *head_ref;
-    *head_ref = new_node;
+                    }
+                    cout<<ans<<'\n';
+                }
+            }
+        }
+
 }
-
-void InsertAtEnd(Node** head_ref, int new_data){
-    Node* new_node = new Node();
-    new_node->data = new_data;
-    new_node->next = NULL;
-
-    if(*head_ref == NULL){
-        *head_ref = new_node;
-        return;
-    }
-
-    Node* last = *head_ref;
-
-    while(last->next != NULL){
-        last = last->next;
-    }
-
-    last->next = new_node;
-}
-
-void PrintList(Node* n){
-    while(n != NULL){
-        cout<<n->data<<" ";
-        n = n->next;
-    }
-}
-int main(){
-    Node* head = new Node();
-    Node* second = new Node();
-    Node* third = new Node();
-
-    head->data = 10;
-    head->next = second;
-
-    second->data = 20;
-    second->next = third;
-
-    third->data = 30;
-    third->next = NULL;
-
-    Push(&head, 8);
-
-    InsertAtEnd(&head, 40);
-    InsertAtEnd(&head, 50);
-    PrintList(head);
-
-
-
-    return 0;
+int main() {
+     ios_base::sync_with_stdio(0);
+     cin.tie(0);
+     int t=1;
+     while(t--) {
+         solve();
+     }
 }

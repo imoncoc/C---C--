@@ -27,7 +27,7 @@ int main() {
                     ans+=value[temp];
 
                     }
-                    cout<<ans<<'\n';
+                    cout<<ans<<'\n'<<endl;
             }
         }
 
@@ -38,3 +38,4 @@ int main() {
 
     return 0;
 }
+
