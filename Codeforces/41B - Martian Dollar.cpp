@@ -1,58 +1,22 @@
-#include<bits/stdc++.h>
+#include<iostream>
 using namespace std;
-int main(){
-     int n,b;
-    cin>>n>>b;
-     int arr[n];
+int ans;
+int main()
+{
 
-    for(int i = 0; i < n; i++){
-        cin>>arr[i];
-    }
+	int n,k,a[2002]={},test=0,ans=0;
 
-    int minPrice = INT_MAX;
-    int maxProfit = 0;
-    int mini = 0, maxi = 0;
-    int ans = 0;
+	cin>>n>>k;
+	for(int i=0;i<n;i++)cin>>a[i];
 
+	for(int i=0;i<n;i++)
+	{
+		for(int j=i+1;j<n;j++)
+		{
+			ans=max(ans,k/a[i]*a[j]+k%a[i]);
+		}
+	}
 
-    for(int i = 0; i < n; i++){
-        minPrice = min(minPrice, arr[i]);
-        maxProfit = max(maxProfit, arr[i] - minPrice);
-        if(ans < maxProfit){
-            ans = maxProfit;
-            mini = minPrice;
-            maxi = arr[i];
-
-        }
-    }
-
-
-     if(maxi == 0){
-        cout<<b<<endl;
-    }else{
-         int temp = b / mini;
-         int temp2 = b % mini;
-         int anss = maxi * temp + temp2;
-             cout<<anss<<endl;
-    }
-
-
-
-
-
-/*
-cout<<"mini: "<<mini<<endl;
-    cout<<"maxi: "<<maxi<<endl;
-
-    //cout<<maxi * temp + temp2<<endl;
-
-cout<<"minPrice: "<<minPrice<<endl;
-    cout<<"maxProfit: "<<maxProfit<<endl;
-
-    cout<<"ans: "<<ans<<endl;
-    cout<<"temp: "<<temp<<endl;
-    cout<<"temp2: "<<temp2<<endl;
-    */
-
-    return 0;
+	cout<<max(ans,k)<<endl;
+	return 0;
 }
