@@ -5,42 +5,40 @@ void addEdge(vector<int> adj[], int u, int v){
     adj[v].push_back(u);
 }
 
-vector<int> BFS(vector<int> adj[], int V){
-    vector<int> bfs_Travesal;
-    vector<bool> visited(V, false);
-
-    for(int i = 0; i < V; i++){
-        if(!visited[i]){
-            queue<int> q;
-            visited[i] = true;
-            q.push(i);
-
-            while(!q.empty()){
-                int node = q.front();
-                q.pop();
-                bfs_Travesal.push_back(node);
-
-                for(auto it: adj[node]){
-                    if(!visited[it]){
-                        q.push(it);
-                        visited[it] = true;
-                    }
-                }
+class Solution{
+    void dfs(int node, vector<int>&dfs_travesal, vector<bool>&visited, vector<int> adj[]){
+        dfs_travesal.push_back(node);
+        visited[node] = true;
+        for(auto it: adj[node]){
+            if(!visited[it]){
+                dfs(it, dfs_travesal, visited, adj);
             }
         }
     }
+public:
+    vector<int>dfsOfGraph(vector<int> adj[], int V){
+        vector<int> dfs_travesal;
+        vector<bool> visited (V, false);
+        for(int i = 0; i< V; i++){
+            if(!visited[i]){
+                dfs(i, dfs_travesal, visited, adj);
+            }
+        }
+        return dfs_travesal;
+    }
+};
 
-    return bfs_Travesal;
+void printDFS(vector<int> DF){
+    for(int i = 0; i < DF.size(); i++){
+        cout<<DF[i]<<" ";
+    }
 }
-
-
 
 void printGraph(vector<int> adj[], int V){
     for(int i = 0; i < V; i++){
-        cout<<i<<" -> ";
+            cout<<i<<" -> ";
         for(int j = 0; j < adj[i].size(); j++){
             cout<<adj[i][j];
-
             if(j != adj[i].size() - 1){
                 cout<<", ";
             }
@@ -48,28 +46,23 @@ void printGraph(vector<int> adj[], int V){
         cout<<endl;
     }
 }
-
-void printAns(vector<int> ans){
-    for(int i = 0; i < ans.size(); i++){
-        cout<<ans[i]<<" ";
-    }
-}
 int main(){
-    int V = 5;
+    int V = 8;
     vector<int> adj[V];
 
-    addEdge(adj, 0, 1);
-    addEdge(adj, 0, 4);
     addEdge(adj, 1, 2);
-    addEdge(adj, 1, 3);
-    addEdge(adj, 2, 3);
-    addEdge(adj, 3, 4);
+    addEdge(adj, 2, 4);
+    addEdge(adj, 2, 7);
+    addEdge(adj, 3, 5);
+    addEdge(adj, 4, 6);
+    addEdge(adj, 6, 7);
 
     printGraph(adj, V);
 
-    vector<int> ans = BFS(adj, V);
-    printAns(ans);
+    Solution obj;
+    vector<int> DF = obj.dfsOfGraph(adj, V);
 
+    printDFS(DF);
 
 
 
