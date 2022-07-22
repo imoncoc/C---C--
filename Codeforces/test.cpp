@@ -1,28 +1,27 @@
-#include <bits/stdc++.h>
-#define ll long long
+#include<bits/stdc++.h>
 using namespace std;
 
 int main(){
-    //ios_base::sync_with_stdio(0);
-    //cin.tie(0);
-    int n,b;cin>>n>>b;
-    int a[n];
-    int mx=b;
-    for(int i=0;i<n;i++)cin>>a[i];
-    for(int i=0;i<n;i++){
-        int x=b/a[i];
-        //cout<<"x: "<<x<<endl;
-        int r=b%a[i];
-        //cout<<"r: "<<r<<endl;
-        for(int j=i;j<n;j++){
-                //cout<<"XXXX: "<<x*a[j]+r<<endl;
-            if((x*a[j]+r)>mx){
-                mx=x*a[j]+r;
-                //cout<<"mx: "<<mx<<endl;
-            }
-        }
-        //cout<<endl;
-    }
-    cout<<mx<<endl;
-    return 0;
+  int n, m; cin>>n>>m;
+
+  vector<int>v(n);
+  for(int i=0; i<n; i++){
+    cin>>v[i];
+
+  }
+  int pos=1;
+  int next;
+  while(pos<m){
+    next=pos+v[pos-1];
+    pos=next;
+    cout<<"pos: "<<pos<<endl;
+  }
+
+  if(pos==m){
+    cout<<"YES"<<endl;
+  }
+  else{
+    cout<<"NO"<<endl;
+  }
+
 }
