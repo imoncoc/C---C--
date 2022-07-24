@@ -1,14 +1,21 @@
 #include<iostream>
 using namespace std;
-int count = 0;
-void f(){
-    int i = 1;
-    cout<<i++<<endl;
-    f();
+
+void f(int i, int sum){
+    if(i < 1){
+            cout<<sum<<endl;
+        return;
+    }
+
+    f(i-1, sum+i);
 }
 int main(){
-    int test = 3;
-    f();
+    int arr[] = {5, 10, 15, 20, 25, 30};
+    int n = 3;
+
+    f(n, 0);
+
+
 
 
     return 0;

@@ -5,10 +5,10 @@ void f(int a, int n){
 
     cout<<a<<endl;
     f(a+1, n);
+
 }
 int main(){
-    int n;
-    cin>>n;
+    int n = 5;
     f(1, n);
 
     return 0;
