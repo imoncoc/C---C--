@@ -1,19 +1,24 @@
 #include<iostream>
 using namespace std;
-
-void f(int i, int sum){
-    if(i < 1){
-            cout<<sum<<endl;
-        return;
+bool f(int i, int n, string str){
+    if( i >= n/2){
+            cout<<"String is Plaindrome."<<endl;
+        return true;
     }
-
-    f(i-1, sum+i);
+    if(str[i] != str[n-i-1]){
+        cout<<"String isn't Plaindrome."<<endl;
+        return false;
+    }
+    f(i+1, n, str);
 }
 int main(){
-    int arr[] = {5, 10, 15, 20, 25, 30};
-    int n = 3;
+    string str = "MADAM";
+    int n = str.size();
 
-    f(n, 0);
+
+    f(0, n, str);
+
+
 
 
 

@@ -8,7 +8,7 @@ bool f(int i, string &s){
 
 }
 int main(){
-    string s = "madsm";
+    string s = "madam";
     cout<<f(0, s);
 
 

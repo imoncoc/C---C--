@@ -1,34 +1,30 @@
 #include<bits/stdc++.h>
 using namespace std;
+
 int main(){
-    int n,k;
+   long long n,k,ans=0,sum=0;
     cin>>n>>k;
-    vector<long long> arr;
-
-    for(long long i = 0; i < n; i++){
-            int x;
-    cin>>x;
-        arr.push_back(x);
+    int a[n];
+    for(int i=0;i<n;i++){
+        cin>>a[i];
     }
+    for(int i=0;i<k;i++){
+        sum+=a[i];
+    }
+    //cout<<"sum: "<<sum<<endl;
+    long long sum2=sum;
+    //cout<<"sum2: "<<sum2<<endl;
 
-    sort(arr.begin(), arr.end());
-
-    long long int sum = 0, count = 0;
-
-    for(long long i = 0; i < n; i++){
-        sum += arr[i];
-        count++;
-
-        if(sum >= k){
-            break;
+    for(int i=1;i<n-k+1;i++){
+        sum2+=a[i+k-1]-a[i-1];
+        //cout<<sum2<<endl;
+        if(sum2<sum){
+            ans=i;
+            sum=sum2;
         }
     }
-
-
-    cout<<count<<endl;
-
-
-
+    cout<<ans+1<<endl;
 
     return 0;
+
 }
