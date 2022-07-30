@@ -11,7 +11,7 @@ int f(int n){
 int main(){
 
 
-    cout<<f(5);
+    cout<<f(6);
 
 
     return 0;
