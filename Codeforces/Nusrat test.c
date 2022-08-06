@@ -44,13 +44,18 @@ int main()
     printf("SEMISTER 1 SUBJECTS\n");
     CSE_101:
     printf("CSE_101 = ");
+    fflush(stdin);
     scanf("%d", &CSE_101);
+    //fflush(stdin);
 
-
-     if(CSE_101<0 || CSE_101>100 || sizeof(CSE_101) != sizeof(int) )
+    if((int)CSE_101 == 0) {
+            printf("Wrong input\n");
+            //fflush(stdin);
+        goto CSE_101;
+    }
+    else if(CSE_101<0 || CSE_101>100 )
     {
         printf("value should be 0-100\n");
-        fflush(stdin);
         goto CSE_101;
     }
     PHY_101:
@@ -272,3 +277,4 @@ int main()
 
           return clamped_GPA;
     }
+
