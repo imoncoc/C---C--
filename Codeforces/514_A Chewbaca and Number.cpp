@@ -2,12 +2,17 @@
 using namespace std;
 int main()
 {
-    int n;
-    cin>>n;
-    int num = n, digit, rev;
+    string st;
+    cin>>st;
+    int n = st.size();
 
-    while(num != 0 ){
-        digit = num % 10;
+    for(int i = 0; i < n; i++){
+        if( i == 0 && st[i] == '9' || st[i] < '5'){
+            cout<<st[i];
+        }
+        else{
+            cout<<abs('9' - st[i]);
+        }
     }
 
 
