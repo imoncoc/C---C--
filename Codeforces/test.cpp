@@ -3,22 +3,31 @@
 using namespace std;
 int main()
 {
-    system("cls");
-    string s;
-    cin >> s;
-    int r;
+    int n, m, ans = 0;
+    cin>>n>>m;
+    string str[n];
 
-
-    for (size_t i = 0; i < s.size(); i++)
-    {
-        r = '9' - s[i];
-        if (s[i] < '5'|| s[i] == '9' && i == 0)
-        {
-            cout << s[i];
-        }
-        else
-        {
-            cout << r;
-        }
+    for(int i = 0; i < n; i++){
+        cin>>str[i];
     }
+
+    for(int i = 0; i < n; i++){
+        cout<<str[i]<<endl;
+    }
+
+    for(long long i = 0; i < n - 1; i++){
+            cout<<str[i][m-1]<<" ";
+            if(str[i][m-1] != 'D') ans++;
+        }
+
+        cout<<ans<<endl;
+
+        for(long long i = 0; i < m - 1; i++){
+                cout<<str[n -i][i]<<" ";
+            if(str[n-1][i] != 'R') ans++;
+        }
+        cout<<ans<<endl;
+
+
+    return 0;
 }

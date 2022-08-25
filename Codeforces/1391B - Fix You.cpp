@@ -1,44 +1,28 @@
 #include<bits/stdc++.h>
 using namespace std;
 int main(){
-    int rows, cols;
-    cin>>rows>>cols;
-    char arr[rows][cols];
+    int t;
+    cin>>t;
+    while(t--){
+        long long n, m, ans = 0;
+        cin>>n>>m;
+        string str[n];
 
-    for(int i = 0; i < rows; i++){
-        for(int j = 0; j < cols; j++){
-            cin>>arr[i][j];
+
+        for(long long i = 0; i < n; i++){
+            cin>>str[i];
         }
-    }
-    int count = 0;
 
-    if(arr[0][0] == 'R'){
-            int ans = 0;
-    for(int i = 0; i < rows; i++){
-        for(int j = ans; j < cols; j++){
-            cout<<arr[i][j]<<" ";
-            if(i == 0 && j != cols-1 && arr[i][j] == 'D') count++;
+        for(long long i = 0; i < n - 1; i++){
+            if(str[i][m-1] != 'D') ans++;
         }
-        ans = cols - 1;
-        cout<<endl;
-        cout<<"count: "<<count<<endl;
-    }
-    }
 
-
-
-    if(arr[0][0] == 'D'){
-    for(int i = 0; i < rows; i++){
-        for(int j = 0; j < cols; j++){
-                if(i == rows-1 || j == 0 )
-            cout<<arr[i][j]<<" ";
+        for(long long i = 0; i < m - 1; i++){
+            if(str[n-1][i] != 'R') ans++;
         }
-        cout<<endl;
+
+        cout<<ans<<endl;
     }
-    }
-
-
-
 
 
 
