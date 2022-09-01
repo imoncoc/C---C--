@@ -14,7 +14,7 @@ int main(){
     }
 
 
-    if(mp['T'] == 1 && mp['i'] == 1 && mp['m'] == 1 && mp['u'] == 1 && mp['r'] == 1){
+    if(mp['T'] == 1 && mp['i'] == 1 && mp['m'] == 1 && mp['u'] == 1 && mp['r'] == 1 && mp.size() == 5){
         cout<<"Yes"<<endl;
     }
     else {
