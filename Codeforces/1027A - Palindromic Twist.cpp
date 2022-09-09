@@ -10,6 +10,8 @@ int main(){
     cin>>str;
     string ans = "YES";
 
+    
+
     for(int i = 0; i < n/2; i++){
             int left = str[i];
     int right = str[n-i-1];
