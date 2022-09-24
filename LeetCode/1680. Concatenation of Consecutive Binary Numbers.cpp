@@ -11,7 +11,9 @@ int main(){
 
         for (int i = 1; i <= n; ++i) {
             int len = numberOfBits(i);
+            cout<<"len: "<<len<<endl;
             ans = ((ans << len) % MOD + i) % MOD;
+            cout<<"ans: "<<ans<<endl;
         }
 
         cout<<ans<<endl;
