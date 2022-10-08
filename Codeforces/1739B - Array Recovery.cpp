@@ -10,13 +10,13 @@ void solve(){
 	    }
 
 	    int a[n];
-	    a[0]=d[0];
+	    a[0] = d[0];
 	    bool ans=false;
 	    for(int i=1;i<n;i++)
 	    {
 	        int temp1 = a[i-1] - d[i];
 	        int temp2 = a[i-1] + d[i];
-	        if(temp1 == temp2 || temp1<0)
+	        if(temp1 == temp2 || temp1 < 0)
 	        {
 	            ans = true;
 	            a[i] = a[i-1] + d[i];
