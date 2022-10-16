@@ -36,9 +36,22 @@ int main() {
     push(&head, 40);
     push(&head, 50);
     push(&head, 60);
+    push(&head, 70);
 
     printList(head);
 
 
+    Node* slow = head;
+    Node* fast = head;
+
+    while(fast && fast->next){
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+
+    cout<<endl<<"Middle Elements: "<<slow->data<<endl;
+
+
     return 0;
 }
+
