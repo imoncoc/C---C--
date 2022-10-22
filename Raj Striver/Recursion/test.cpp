@@ -1,22 +1,18 @@
-#include<iostream>
+
+// A C++ program to demonstrate working of
+// recursion
+#include <bits/stdc++.h>
 using namespace std;
-void f(i, sum){
-    if(i > 1){
-        return;
-    }
+
+void printFun(int test){
+    cout<<test<<" ";
+    printFun(test);
 
 }
 
+// Driver Code
 int main(){
-   int n;
-   cin>>n;
-
-   int sum = f(n, 0);
-
-
-
-
-
-
-    return 0;
+    int n;
+    cin>>n;
+    printFun(n);
 }
