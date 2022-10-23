@@ -5,9 +5,9 @@ int main(){
     cin>>n;
 
     if(n <= 2 || n % 2 != 0){
-        cout<<"NO"<<endl;
+        cout<<"NO"<<"\n";
     }else{
-    cout<<"YES"<<endl;
+    cout<<"YES"<<"\n";
     }
 
 

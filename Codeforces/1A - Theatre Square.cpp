@@ -16,7 +16,7 @@ int main(){
 
     ans = len * bre;
 
-    cout<<ans<<endl;
+    cout<<ans<<"/n";
 
 
 
