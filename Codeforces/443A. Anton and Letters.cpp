@@ -1,23 +1,24 @@
 #include<bits/stdc++.h>
 using namespace std;
 int main(){
-    vector<string> str;
-    for(int i = 0; i < 100; i++){
-        string x;
-        cin>>x;
-        if(x[1] == "}"){
-            break;
-        }
-        str.push_back(x);
-    }
+   string s;
+   getline(cin,s);
+   int n=0;
+   for(int i=1; i<(s.size()-1) ; i++)
+   {
+      if(s[i] >= 'a' && s[i] <= 'z')
+      {
+         n++;
+         for(int j=1 ; j<i ; j++)
+         {
+            if(s[i] ==  s[j])
+            {
+               n--;
+               break;
+            }
+         }
+      }
+   }
 
-    for(int i = 0; i < str.size(); i++){
-        cout<<str[i]<<" ";
-    }
-
-
-
-
-
-    return 0;
+   cout << n;
 }
