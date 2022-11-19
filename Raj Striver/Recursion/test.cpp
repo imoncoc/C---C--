@@ -1,18 +1,15 @@
-
-// A C++ program to demonstrate working of
-// recursion
 #include <bits/stdc++.h>
 using namespace std;
-
-void printFun(int test){
-    cout<<test<<" ";
-    printFun(test);
-
+void f(int i, int n){
+    if(i < 1){
+        return;
+    }
+    //cout<<"Raj: "<<i<<endl;
+    f(i-1, n);
+    cout<<"Striver: "<<i<<endl;
 }
-
-// Driver Code
 int main(){
     int n;
     cin>>n;
-    printFun(n);
+    f(5, n);
 }
