@@ -1,15 +1,15 @@
 #include <bits/stdc++.h>
 using namespace std;
-void f(int i, int n){
-    if(i < 1){
-        return;
+int f(int n){
+    if(n == 1){
+        return 1;
     }
-    //cout<<"Raj: "<<i<<endl;
-    f(i-1, n);
-    cout<<"Striver: "<<i<<endl;
+
+    return n * f(n - 1);
 }
 int main(){
     int n;
     cin>>n;
-    f(5, n);
+    int sum = f(n);
+    cout<<sum<<endl;
 }
