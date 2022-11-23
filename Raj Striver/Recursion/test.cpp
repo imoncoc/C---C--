@@ -1,15 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
-int f(int n){
-    if(n == 1){
-        return 1;
-    }
+bool f(int i, string &s){
+    int n = s.size();
+    if(i >= n/2) return true;
+    if(s[i] != s[n-i-1]) return false;
 
-    return n * f(n - 1);
+    return f(i+1, s);
 }
 int main(){
-    int n;
-    cin>>n;
-    int sum = f(n);
-    cout<<sum<<endl;
+    string s = "madam";
+    cout<<f(0, s);
 }
