@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 bool f(int i, string &s){
     int n = s.size();
@@ -9,5 +9,12 @@ bool f(int i, string &s){
 }
 int main(){
     string s = "madam";
-    cout<<f(0, s);
+    cout<<f(0, s)<<endl;
+
+
+
+
+
+
+    return 0;
 }
