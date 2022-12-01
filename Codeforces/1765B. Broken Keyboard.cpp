@@ -2,21 +2,20 @@
 using namespace std;
 #define ll long long int
 void solve(){
-    int n;
+    int n, f = 0;
     cin>>n;
     string s;
     cin>>s;
-    bool flag = true;
-
-    for(int i = 0; i < n; i++){
-            cout<<s[i]<<" ";
-        if(s[i] == s[i+1] && i % 2 == 0){
-            flag = false;
-    break;
-        }
+    for (int i = 1; i < n; i = i+3){
+          //cout<<s[i]<<" ";
+    if(s[i] != s[i+1]){
+        f = 1;
+    }
     }
 
-    if(flag == true){
+
+
+    if(f != 1){
         cout<<"YES"<<endl;
     }
     else{
