@@ -5,28 +5,24 @@ void solve(){
     cin>>n;
     string s;
     cin>>s;
-    set<char> st;
+    map<char, int> mp;
+    int ans = 0;
 
     for(int i = 0; i < n; i++){
-        if(s[i] != s[i+1]){
-                st.insert(s[i]);
-        }
+        mp[s[i]]++;
+        char z = s[i];
 
-        auto pos = st.find(s[i]);
-        if(pos != st.end() ){
-            cout<<"NO"<<endl;
-            break;
+        while(s[i] == z){
+            i++;
+        }
+        i--;
+        if(mp[z] > 1){
+            ans = 1;
         }
     }
 
-    cout<<"set: "<<endl;
-     for (auto itr = st.begin(); itr != st.end(); itr++) {
-        cout << *itr << " ";
-    }
-
-    cout << endl;
-
-    cout<<"YES"<<endl;
+    if(ans == 1) cout<<"NO"<<endl;
+    else cout<<"YES"<<endl;
 
 }
 int main(){
