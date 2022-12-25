@@ -1,33 +1,26 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define ll long long int
-void solve(){
+int main(){
     int n;
     cin>>n;
+   string queue[] = { "Sheldon", "Leonard", "Penny", "Rajesh", "Howard" };
 
-    for(int i = 1; i <= n; i++){
-        if(i == 1) {
-            cout<<"Sheldon"<<endl;
-        }
-        else if(i == 2){
-            cout<<"Leonard"<<endl;
-        }
-        else if(i == 3){
-            cout<<"Penny"<<endl;
-        }
-        else if(i == 4){
-            cout<<"Rajesh"<<endl;
-        }
-        else if(i == 5){
-            cout<<"Howard"<<endl;
-        }
-    }
+// Find the number of people in the queue by doubling until it is greater than n
+int num_people = 1;
+while (num_people * 5 < n)
+{
+    n -= num_people * 5;
+    num_people *= 2;
 }
-int main(){
-    int t = 1;
-    while(t--){
-        solve();
-    }
+
+// Find the index of the person in the queue by dividing n by the number of people
+int index = (n - 1) / num_people;
+
+// Print the name of the person who will drink the n-th can of cola
+std::cout << queue[index] << std::endl;
+
+return 0;
 
 
     return 0;
