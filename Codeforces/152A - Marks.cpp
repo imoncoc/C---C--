@@ -1,43 +1,36 @@
-#include <iostream>
-#include <vector>
-
+#include <bits/stdc++.h>
 using namespace std;
-
 int main() {
-  // Read input
-  int n, m;
-  cin >> n >> m;
-  vector<vector<int>> gradebook(n, vector<int>(m));
-  for (int i = 0; i < n; i++) {
-    for (int j = 0; j < m; j++) {
-      cin >> gradebook[i][j];
+    int n, m;
+    cin>>n>>m;
+    int ans = 0;
+    vector<string> grade(n);
+    for(int i = 0; i < n; i++){
+        cin>>grade[i];
     }
-  }
 
-  // Count successful students
-  int successful_students = 0;
-  for (int i = 0; i < n; i++) {
-    bool is_successful = false;
-    for (int j = 0; j < m; j++) {
-      bool subject_best = true;
-      for (int k = 0; k < n; k++) {
-        if (gradebook[k][j] > gradebook[i][j]) {
-          subject_best = false;
-          break;
+    for(int i = 0; i < n; ++i){
+        bool wasBest = false;
+        for(int j = 0; j < m; ++j){
+            bool isBest = true;
+            for(int k = 0; k < n; ++k){
+                //cout<<"a["<<i<<"]["<<k<<"]: "<<grade[i][k]<<endl;
+                //cout<<"a["<<i<<"]["<<j<<"]: "<<grade[i][j]<<endl;
+                if(grade[k][j] > grade[i][j]){
+                    isBest = false;
+                }
+            }
+            if(isBest){
+                wasBest = true;
+            }
+            //cout<<endl;
         }
-      }
-      if (subject_best) {
-        is_successful = true;
-        break;
-      }
+        if (wasBest){
+            ans++;
+        }
     }
-    if (is_successful) {
-      successful_students++;
-    }
-  }
 
-  // Print result
-  cout << successful_students << endl;
+    cout<<ans<<endl;
 
   return 0;
 }
