@@ -7,26 +7,40 @@ void solve(){
     string s;
     cin>>s;
     int count = 0;
-    vector<string> vec;
-    for(int i = 1; i < n; i++){
-            string sub = "";
-               sub += s[i-1];
-               sub += s[i];
-            vec.push_back(sub);
-        //cout<<s[i-1]<<s[i]<<" ";
-    }
 
-    for(auto i = 0; i < vec.size(); i++){
-            for(int j = i+1; j < vec.size(); j++){
-                if(vec[i] == vec[j]) count++;
+    /*
+    for(int i = 0; i < n-2; i++){
+            string sub = "";
+                   sub += s[i];
+                   sub += s[i+1];
+        for(int j = i+2; j < n-1; j++){
+                string res = "";
+                       res += s[j];
+                       res += s[j+1];
+            //cout<<"sub: "<<sub<<" 2: "<<res<<endl;;
+            if(res == sub){
+                count++;
+                break;
             }
 
-       if(count == 1) break;
+
+        }
+        if(count == 1) break;
     }
+    */
+    string ans = "NO";
+    for(int i = 0; i < n-2; i++){
+        for(int j = i+2; j < n-1; j++){
+            if(s[i] == s[j] && s[j+1] == s[i+1]){
+                ans = "YES";
+                break;
+            }
+        }
+    }
+    cout<<ans<<endl;
 
-
-    if(count >= 1) cout<<"YES"<<endl;
-    else cout<<"NO"<<endl;
+    //if(count == 1) cout<<"YES"<<endl;
+    //else cout<<"NO"<<endl;
 }
 int main(){
     int t;
