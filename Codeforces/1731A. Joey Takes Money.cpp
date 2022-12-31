@@ -9,6 +9,7 @@ void solve(){
         ll x;
         cin>>x;
         ans = ans * x;
+        cout<<"ans: "<<ans<<endl;
     }
     cout<<( (ans) + (n - 1) )*2022<<endl;
 }

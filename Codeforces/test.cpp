@@ -2,7 +2,6 @@
 using namespace std;
 #define ll long long int
 void solve(){
-
 }
 int main(){
     int t;
