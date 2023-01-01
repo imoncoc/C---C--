@@ -2,47 +2,30 @@
 using namespace std;
 #define ll long long int
 void solve(){
-    ll n, m;
+    int n, m;
     cin>>n>>m;
-    vector<ll> arr1(n);
-    vector<ll> arr2(m);
-    ll ans = 0;
+    ll sum = 0;
+    priority_queue<int, vector<int>, greater<int>> pq;
 
-    for(ll i = 0; i < n; i++){
-        cin>>arr1[i];
+    for(int i = 0; i < n; i++){
+        int temp;
+        cin>>temp;
+        pq.push(temp);
     }
 
-    for(ll i = 0; i < m; i++){
-        cin>>arr2[i];
+    for(int i = 0; i < m; i++){
+        int temp;
+        cin>>temp;
+        pq.pop();
+        pq.push(temp);
     }
 
-    sort(arr1.begin(), arr1.end());
-    sort(arr2.begin(), arr2.end(), greater<int>());
-
-    if(n == m){
-        for(ll i = 0; i < m; i++){
-            ans += arr2[i];
-        }
-    }
-    else if(n > m){
-        for(ll i = 0; i < m; i++){
-            ans += arr2[i];
-        }
-        for(ll i = m; i < n; i++){
-            ans += arr1[i];
-        }
-    }
-    else{
-        if(m > n){
-            for(ll i = 0; i < n; i++){
-                ans += arr2[i];
-            }
-        }
+    while(!pq.empty()){
+        sum += pq.top();
+        pq.pop();
     }
 
-    cout<<ans<<endl;
-
-
+    cout<<sum<<endl;
 }
 int main(){
     int t;
