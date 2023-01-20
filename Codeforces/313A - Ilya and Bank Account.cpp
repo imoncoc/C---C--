@@ -1,31 +1,18 @@
 #include<bits/stdc++.h>
 using namespace std;
 int main(){
-    int n;
-    cin>>n;
-    int ans = n;
-    string res = "";
-    int count = 0;
+    int acc;
+	cin >> acc;
+	if(acc >= 0) cout << acc;
+	else{
+		int last,las2;
+		last = acc%(-10);
+	    //cout << last << endl;
+		las2 = (acc/10)%(-10);
+	    //cout << las2 << endl;
+		if(last <= las2) cout << acc/10;
+		else cout << (acc/10)-las2+last;
+	}
+	return 0;
 
-    if(n > 0){
-        ans = n;
-    }else{
-        stringstream ss;
-        ss << n;
-        ss >> res;
-        string st;
-        count = res.size();
-        if()
-
-
-    }
-
-    cout<<"ans: "<<ans<<endl;
-    cout<<"res: "<<res<<endl;
-    cout<<"SIZE: "<<count<<endl;
-
-
-
-
-    return 0;
 }
