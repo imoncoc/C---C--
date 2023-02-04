@@ -2,7 +2,7 @@
 using namespace std;
 #define ll long long int
 void solve(){
-    int n;
+    ll n;
     cin>>n;
     vector<vector<int>> arr;
     for(int i = 0; i < n; i++){
