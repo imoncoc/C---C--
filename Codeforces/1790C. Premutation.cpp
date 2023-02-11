@@ -26,15 +26,16 @@ void solve(){
     */
 
     map<int, int> mp;
-    int max_e = INT_MIN;
+    int max_e = INT_MIN, res = INT_MIN;
     for(int i = 0; i < n; i++){
         mp[arr[i][0]]++;
     }
 
-    //cout<<"map: ";
+   // cout<<"map: ";
     for(auto it: mp){
         //cout<<it.first<<" "<<it.second<<endl;
-        if(it.second > max_e){
+        if(it.second > res){
+                res = it.second;
             max_e = it.first;
         }
     }
@@ -42,7 +43,7 @@ void solve(){
     //cout<<endl<<"max_e: "<<max_e<<endl;
 
 
-   // cout<<endl<<"ans: ";
+    //cout<<endl<<"ans: ";
     cout<<max_e<<" ";
     for(int i = 0; i < n; i++){
         if(arr[i][0] != max_e){
