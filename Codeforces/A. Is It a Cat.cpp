@@ -6,31 +6,30 @@ void solve(){
     cin>>n;
     string s;
     cin>>s;
-    string res = "meow";
+    string res = "meow", ans = "YES";
     bool flag = true;
     int a = 0;
     transform(s.begin(), s.end(), s.begin(), ::tolower);
     //cout<<"s: "<<s<<endl;
-    for(int i = 0; i < n; i++){
+    for(ll i = 0; i < n; i++){
         if(s[i] == res[a]){
             a++;
         }
-        else if(s[i] == 'm' || s[i] == 'e' || s[i] == 'o' || s[i] == 'w'){
-                continue;
-
+        else if(a != 0 && s[i] == res[a-1]){
+            continue;
         }
         else{
-            flag = false;
+            ans = "NO";
+            break;
         }
-        //cout<<"flag: "<<flag<<endl;
     }
 
-    if(a >= 4 && flag == true){
-        cout<<"YES"<<endl;
+
+    if(s[a] == 'w' && ans == "YES"){
+        ans = "Yes";
     }
-    else {
-        cout<<"NO"<<endl;
-    }
+
+    cout<<ans<<endl;
 
 
 }
@@ -44,4 +43,5 @@ int main(){
 
     return 0;
 }
+
 

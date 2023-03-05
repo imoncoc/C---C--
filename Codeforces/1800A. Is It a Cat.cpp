@@ -6,31 +6,27 @@ void solve(){
     cin>>n;
     string s;
     cin>>s;
-    string res = "meow", ans = "YES";
-    bool flag = true;
-    int a = 0;
-    transform(s.begin(), s.end(), s.begin(), ::tolower);
-    //cout<<"s: "<<s<<endl;
-    for(ll i = 0; i < n; i++){
-        if(s[i] == res[a]){
-            a++;
-        }
-        else if(a != 0 && s[i] == res[a-1]){
-            continue;
-        }
-        else{
-            ans = "NO";
-            break;
+    string res = "meow";
+    string st;
+
+    for(int i = 0; i < n; i++){
+        if(s[i] <= 90) {
+            s[i] += 32;
         }
     }
 
-
-    if(s[a] == 'w' && ans == "YES"){
-        ans = "Yes";
+    for(int i = 0; i < n; i++){
+        if(st.empty() || st.back() != s[i] ){
+            st.push_back(s[i]);
+        }
     }
 
-    cout<<ans<<endl;
-
+    if(st == res){
+        cout<<"YES"<<endl;
+    }
+    else{
+        cout<<"NO"<<endl;
+    }
 
 }
 int main(){
