@@ -7,26 +7,28 @@ void solve(){
     cin>>n>>k;
     cin>>s;
 
-    map<char, int> mp;
-    int ans = INT_MIN;
-
-    for(int i = 0; i < n; i++ ){
-            int x = s[i];
-    if(x < 97){
-        mp[s[i] +32]++;
-    }
-    else
-        mp[s[i]]++;
+    ll ans = 0;
+    map<char, int> freq;
+    for(auto c: s){
+        freq[c]++;
     }
 
-    for(auto it: mp){
-            if(ans < it.second){
-                ans = it.second;
-            }
-        //cout<<it.first<<" "<<it.second<<endl;
+    for(char c = 'a'; c <= 'z'; c++){
+        int mn = min(freq[c], freq[(c-32)]);
+        ans += mn;
+        freq[c] -= mn;
+        freq[c-32] -= mn;
     }
 
-    cout<<ans- 1<<endl;
+    for(char c = 'a'; c <= 'z'; c++){
+        int add = max(freq[c], freq[c-32]);
+        int mn = min(k, add/2);
+        ans += mn;
+        k -= mn;
+    }
+
+
+    cout<<ans<<endl;
 }
 int main(){
     int t;
