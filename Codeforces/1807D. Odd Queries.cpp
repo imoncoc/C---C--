@@ -2,41 +2,34 @@
 using namespace std;
 #define ll long long int
 void solve(){
-    int n, q;
+   int n,q;
     cin>>n>>q;
-    vector<ll> arr(n);
-    for(ll i = 0; i < n; i++){
-        cin>>arr[i];
+        vector<ll> a(n+1,0);
+        for(int i=1;i<=n;i++){
+            cin>>a[i];
+        }
+        vector<ll> pref(n+1,0);
+        for(int i=1;i<=n;i++){
+            pref[i]=pref[i-1]+a[i];
     }
 
     while(q--){
-            vector<ll> res = arr;
-        ll a, b, c;
-        cin>>a>>b>>c;
-
-        for(ll i = a-1; i < b; i++){
-            res[i] = c;
+         ll l,r;             cin>>l>>r;
+            ll k;               cin>>k;
+            ll sum=pref[n];
+            sum-=(pref[r]-pref[l-1]);
+            sum+=((r-l+1LL)*k);
+            if(sum%2LL==1LL){
+                cout<<"YES"<<endl;
+            }
+            else{
+                cout<<"NO"<<endl;
+            }
         }
-
-        //cout<<"res: ";
-        ll sum = 0;
-    for(ll i = 0; i < n; i++){
-       // cout<<res[i]<<" ";
-        sum += res[i];
-    }
-    //cout<<endl;
-    //cout<<endl;
-
-    if(sum % 2 == 0 ){
-        cout<<"NO"<<endl;
-    }
-    else{
-        cout<<"YES"<<endl;
-    }
     }
 
 
-}
+
 int main(){
     int t;
     cin>>t;
