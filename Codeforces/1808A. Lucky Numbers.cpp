@@ -2,16 +2,25 @@
 using namespace std;
 #define ll long long int
 void solve(){
-    ll a, b;
+    int a, b;
     cin>>a>>b;
-    ll lower = max(a, b-100), higher = b;
-    ll maxi = -1, ans = 0;
-    for(int i = lower; i <=higher; i++ ){
-        string stri = to_string(i);
+        int ans = 0,index,c = 0;
+        for(int i = a; i <= min(a+100, b); i++){
+            int mx = 0, mn = INT_MAX, k = i;
+            index = 0;
+            while(k){
+                mn = min(k%10, mn);
+                mx = max(k%10, mx);
+                k /=10;
+            }
 
-    }
-
-cout<<60<<endl;
+            index = mx - mn;
+            if(index >= c){
+                c = index;
+                ans = i;
+            }
+        }
+        cout<<ans<<endl;
 }
 int main(){
     int t;
