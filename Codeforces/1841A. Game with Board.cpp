@@ -2,7 +2,14 @@
 using namespace std;
 #define ll long long int
 void solve(){
-
+    int n;
+    cin>>n;
+    if(n == 2 || n == 3 || n == 4){
+        cout<<"Bob"<<endl;
+    }
+    else{
+        cout<<"Alice"<<endl;
+    }
 }
 int main(){
     int t;
@@ -14,3 +21,4 @@ int main(){
 
     return 0;
 }
+
